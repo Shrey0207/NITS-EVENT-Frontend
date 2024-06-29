@@ -2,7 +2,7 @@ import { Button, Form, Input, message } from "antd";
 import WelcomeContent from "../common/welcome-content";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { registerUser } from "../../../api-services/user-service";
+import { registerUser } from "../../../api-services/users-service";
 
 function RegisterPage() {
   const [loading, setLoading] = useState(false);

@@ -1,25 +1,11 @@
-import { useEffect, useState } from "react";
-import { getCurrentUser } from "../../../api-services/user-service";
-import { message } from "antd";
+import usersGlobalStore, { UsersStoreType } from "../../../store/users-store";
 
 function Homepage() {
-  const [user, setUser] = useState<any>(null);
-
-  const getData = async () => {
-    try {
-      const response = await getCurrentUser();
-      setUser(response.data);
-    } catch (error: any) {
-      message.error(error.message);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  const { currentUser } = usersGlobalStore() as UsersStoreType;
   return (
-    <div className="p-5">
+    <div>
       <h1>Homepage</h1>
-      <p>Welcome,{user?.name}!</p>
+      <p>Welcome,{currentUser?.name}!</p>
     </div>
   );
 }

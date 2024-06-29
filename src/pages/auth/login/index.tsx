@@ -3,7 +3,7 @@ import WelcomeContent from "../common/welcome-content";
 import { Button, Form, Input, message } from "antd";
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { loginUser } from "../../../api-services/user-service";
+import { loginUser } from "../../../api-services/users-service";
 
 function LoginPage() {
   const [loading, setLoading] = useState(false);
