@@ -1,10 +1,23 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import WelcomeContent from "../common/welcome-content";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { registerUser } from "../../../api-services/user-service";
 
 function RegisterPage() {
-  const onFinish = (values: never) => {
-    console.log("Received values:", values);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const onFinish = async (values: never) => {
+    try {
+      setLoading(true);
+      const response = await registerUser(values);
+      message.success(response.message);
+      navigate("/login");
+    } catch (error: any) {
+      message.error(error.response?.data.message || error.message);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -46,10 +59,10 @@ function RegisterPage() {
           >
             <Input.Password placeholder="Password" />
           </Form.Item>
-
-          <Button type="primary" htmlType="submit" block>
+          <Button type="primary" htmlType="submit" block loading={loading}>
             Register
           </Button>
+
           <Link to="/login">Already have an account ? Login</Link>
         </Form>
       </div>
