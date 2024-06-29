@@ -5,7 +5,7 @@ import Sidebar from "./sidebar";
 import { getCurrentUser } from "../api-services/users-service";
 import { message } from "antd";
 import usersGlobalStore, { UsersStoreType } from "../store/users-store";
-// import Spinner from "../components/spinner";
+import Spinner from "../components/spinner";
 
 function PrivateLayout({ children }: { children: React.ReactNode }) {
   const [showContent, setShowContent] = useState(false);
@@ -38,7 +38,7 @@ function PrivateLayout({ children }: { children: React.ReactNode }) {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        {/* <Spinner /> */}
+        <Spinner />
       </div>
     );
   }
