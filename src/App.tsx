@@ -1,7 +1,9 @@
-import "./App.css";
-
 function App() {
-  return <div>Home</div>;
+  return (
+    <div className="h-screen flex justify-center items-center bg-gray-700">
+      <h1 className="text-white">Homepage</h1>
+    </div>
+  );
 }
 
 export default App;
