@@ -18,12 +18,15 @@ export interface EventFormStepProps {
 function EventForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [eventData, setEventData] = useState<any>({});
+  const [selectedMediaFiles, setSelectedMediaFiles] = useState([]);
 
   const commonProps = {
     eventData,
     setEventData,
     setCurrentStep,
     currentStep,
+    selectedMediaFiles,
+    setSelectedMediaFiles,
   };
 
   const stepsData = [
@@ -37,7 +40,7 @@ function EventForm() {
     },
     {
       name: "Media",
-      component: <Media />,
+      component: <Media {...commonProps} />,
     },
     {
       name: "Tickets",
