@@ -5,8 +5,9 @@ function CreateEvenetPage() {
   return (
     <div>
       <PageTitle title="Create Event" />
+
       <div className="mt-5">
-        <EventForm />
+        <EventForm type="create" initialData={{}} />
       </div>
     </div>
   );
