@@ -9,6 +9,8 @@ import PrivateLayout from "./layouts/private-layout";
 import EventsPage from "./pages/private/admin/events";
 import CreateEvenetPage from "./pages/private/admin/events/create";
 import EditEventPage from "./pages/private/admin/events/edit";
+import EventInfoPage from "./pages/private/event";
+import UserBookingsPage from "./pages/private/profile/bookings";
 
 function App() {
   return (
@@ -32,6 +34,14 @@ function App() {
             }
           />
           <Route
+            path="/event/:id"
+            element={
+              <PrivateLayout>
+                <EventInfoPage />
+              </PrivateLayout>
+            }
+          />
+          <Route
             path="/"
             element={
               <PrivateLayout>
@@ -44,6 +54,14 @@ function App() {
             element={
               <PrivateLayout>
                 <ProfilePage />
+              </PrivateLayout>
+            }
+          />
+          <Route
+            path="/profile/bookings"
+            element={
+              <PrivateLayout>
+                <UserBookingsPage />
               </PrivateLayout>
             }
           />
